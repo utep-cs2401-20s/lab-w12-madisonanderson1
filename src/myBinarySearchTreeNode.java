@@ -55,7 +55,27 @@ class myBinarySearchTreeNode{
      // Note that if the tree is a proper BST, this method should complete in O(log n) time.
      // Additionally, remember that the depth is the number of nodes on the path from a node to the root 
      // (i.e. the number of the recursie calls).
+    if(search < myValue){
+      return left.depth(search) + 1;
+    }
+    if(search > myValue){
+      return right.depth(search) + 1;
+    }
+    if(search == myValue){
+      return 0;
+    }
     return -1;
+  }
+
+  public int size(){
+    int sum = 1;
+    if(left != null){
+      sum = sum + left.size();
+    }
+    if(right != null){
+      sum = sum + right.size();
+    }
+    return sum;
   }
   
   // Utility function included so you can debug your solution. 
