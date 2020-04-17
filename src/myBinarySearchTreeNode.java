@@ -13,8 +13,9 @@ class myBinarySearchTreeNode{
     // creates a new Binary Search Tree rooted at the first value in the array
     /// by inserting elements into the tree in the order they are given in A.
     myBinarySearchTreeNode binaryTree = new myBinarySearchTreeNode(A[0]);
-    for(int i = 1; i < A.length-1; i++){
-      binaryTree.insert(A[i]);
+    myValue = A[0];
+    for(int i = 1; i < A.length; i++){
+      insert(A[i]);
     }
   }
   
@@ -46,7 +47,18 @@ class myBinarySearchTreeNode{
   public int height(){
      // This method recursively calculates the height of the entire (sub)tree.
      // This method will take O(n) time
-     return -1;
+    int leftSum = 0;
+    int rightSum = 0;
+    if(left != null){
+      leftSum = 1 + left.height();
+    }
+    if(right != null){
+      rightSum = 1 + right.height();
+    }
+    if(rightSum < leftSum){
+      return leftSum;
+    }
+     return rightSum;
   }
   
   public int depth(int search){
